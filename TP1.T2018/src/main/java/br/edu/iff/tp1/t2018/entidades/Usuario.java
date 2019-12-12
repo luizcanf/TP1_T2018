@@ -7,6 +7,7 @@ package br.edu.iff.tp1.t2018.entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")})
 public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuaIdUsuario")
-    private Collection<Endereco> enderecoCollection;
+    private Collection<Endereco> enderecoCollection = new ArrayList<Endereco>();
     @Size(max = 20)
     @Column(name = "doc_rg")
     private String docRg;
@@ -47,7 +48,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_usuario")
-    private BigDecimal idUsuario;
+    private Integer idUsuario;
     @Size(max = 2147483647)
     @Column(name = "nome")
     private String nome;
@@ -58,15 +59,15 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(BigDecimal idUsuario) {
+    public Usuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public BigDecimal getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(BigDecimal idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 

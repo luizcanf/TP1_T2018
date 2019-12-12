@@ -7,7 +7,7 @@ CREATE TABLE endereco (
     estado character(2),
     municipio character varying,
     cep numeric(8,0),
-    usua_id_usuario numeric
+    usua_id_usuario numeric NOT NULL
 );
 
 

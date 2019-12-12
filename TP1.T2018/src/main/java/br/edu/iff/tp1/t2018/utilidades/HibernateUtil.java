@@ -5,6 +5,7 @@
  */
 package br.edu.iff.tp1.t2018.utilidades;
 
+import br.edu.iff.tp1.t2018.entidades.Endereco;
 import br.edu.iff.tp1.t2018.entidades.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,6 +19,7 @@ public class HibernateUtil {
         AnnotationConfiguration cfg = new AnnotationConfiguration();
         cfg.configure();
         cfg.addAnnotatedClass(Usuario.class);
+        cfg.addAnnotatedClass(Endereco.class);
         factory = cfg.buildSessionFactory();
     }
 

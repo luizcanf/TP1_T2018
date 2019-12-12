@@ -158,5 +158,10 @@ public class Endereco implements Serializable {
     public String toString() {
         return "br.edu.iff.tp1.t2018.entidades.Endereco[ idEndereco=" + idEndereco + " ]";
     }
+
+    public String getEnderecoCompleto() {
+        
+        return this.rua+","+this.numero+"\n"+this.bairro;
+    }
     
 }

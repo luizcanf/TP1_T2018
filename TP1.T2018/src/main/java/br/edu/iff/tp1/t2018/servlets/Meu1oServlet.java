@@ -10,6 +10,7 @@ import br.edu.iff.tp1.t2018.entidades.Usuario;
 import br.edu.iff.tp1.t2018.utilidades.HibernateUtil;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,17 +54,36 @@ public class Meu1oServlet extends HttpServlet {
             user.setDocCpf(Long.parseLong(cpf+cpf2));
         }
 
-        Double aleatorio = Math.random();
-        BigDecimal id = new BigDecimal(aleatorio);
-        user.setIdUsuario(id);
+        Random rng = new Random();
+        user.setIdUsuario(rng.nextInt(Integer.MAX_VALUE));
         
         Endereco endResidencial = new Endereco();
+        endResidencial.setIdEndereco(rng.nextInt(Integer.MAX_VALUE));
+        
+        String rua = request.getParameter("rua");
+        String numero = request.getParameter("numero");
+        String bairro = request.getParameter("bairro");
+        String estado = request.getParameter("estado");
+        String cidade = request.getParameter("cidade");
+        String cep1 = request.getParameter("cep");
+        String cep2 = request.getParameter("cep2");
+        
+        endResidencial.setRua(rua);
+        endResidencial.setNumero(numero);
+        endResidencial.setBairro(bairro);
+        endResidencial.setEstado(estado);
+        endResidencial.setMunicipio(cidade);
+        if (cep1 != null && cep2 != null) {
+            endResidencial.setCep(Integer.parseInt(cep1+cep2));
+        }
+        
         endResidencial.setUsuaIdUsuario(user);
         user.getEnderecoCollection().add(endResidencial);
 
         Session sessaoBD = HibernateUtil.getSession();
         Transaction tr = sessaoBD.beginTransaction();
         sessaoBD.save(user);
+        sessaoBD.save(endResidencial);
         tr.commit();
         sessaoBD.close();
 
