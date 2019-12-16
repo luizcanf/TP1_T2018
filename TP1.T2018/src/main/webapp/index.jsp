@@ -114,7 +114,25 @@
     <input type="text" name="cpf" size="9" maxlength="9"> - <input type="text" name="cpf2" size="2" maxlength="2">
    </div>
 </fieldset>
-
+<br />
+<!-- TELEFONE -->
+<fieldset>
+ <legend>Dados de Telefone</legend>
+ <div>
+    <label for="ddd">DDD:</label>
+    <input type="text" name="ddd" size="2">
+    <label for="numeroTel">Numero:</label>
+    <input type="text" name="numeroTel" size="9">
+   </div>
+ <div>
+    <label for="operadora">Operadora:</label>
+    <select name="operadora"> 
+    <option value="41">Tim</option>
+    <option value="31">Oi</option>
+    <option value="21">Claro</option>
+    </select>
+ </div>
+</fieldset>
 <br />
 <!-- ENDEREÇO -->
 <fieldset>
